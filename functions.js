@@ -69,3 +69,86 @@ function renderTable(array){
     }
   
 }
+
+
+
+function createLabel(labelText, htmlFor) {
+    const label = document.createElement('label'); 
+    label.textContent = labelText;
+    label.htmlFor = htmlFor;
+    return label;
+}
+
+function createInput(inputType, inputId, inputName) {
+    const input = document.createElement('input');
+    input.type = inputType;
+    input.id = inputId;
+    input.name = inputName;
+    return input;
+}
+
+function createErrorDiv() {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error';
+    return errorDiv;
+}
+
+
+
+
+function generateForm() {
+    const form = document.createElement('form');
+    form.id = 'form';
+    form.action = '#';
+    const fields = [
+        {
+            label: 'Terület megnevezése:',
+            id: 'fizika',
+            name: 'fizika',
+            type: 'text'
+        },
+        {
+            label: 'Időszak:',
+            id: 'ido',
+            name: 'ido',
+            type: 'text'
+        },
+        {
+            label: 'Első tudós:',
+            id: 'tudos1',
+            name: 'tudos1',
+            type: 'text'
+        },
+        {
+            label: 'Második tudós:',
+            id: 'tudos2',
+            name: 'tudos2',
+            type: 'text'
+        }
+    ];
+    
+    for (const i of fields) {
+        //field div
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'field';
+        //lable
+        const label = createLabel(i.label, i.id);
+        fieldDiv.appendChild(label);
+        fieldDiv.appendChild(document.createElement('br'));
+        //input
+        const input = createInput(i.type, i.id, i.name);
+        fieldDiv.appendChild(input); 
+        fieldDiv.appendChild(document.createElement('br'));
+        //error div
+        const errorDiv = createErrorDiv();
+        fieldDiv.appendChild(errorDiv);
+        fieldDiv.appendChild(document.createElement('br'));
+        form.appendChild(fieldDiv);
+    }
+    //button
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.textContent = 'Hozzáadás'; 
+    form.appendChild(button);
+    document.body.appendChild(form);
+}
