@@ -32,7 +32,7 @@ const tbody = document.createElement('tbody');
 tbody.id="tbodyID";
 table.appendChild(tbody);
 
-// createHeader(); 
+createHeader(); 
 // renderTable(array);
 // generateForm();
 
@@ -54,17 +54,14 @@ form.addEventListener('submit', function(e) {
     const cell2Value = cell2HtmlElement.value;
     const cell3Value = cell3HtmlElement.value;
     const cell4Value = cell4HtmlElement.value === '' ? undefined : cell4HtmlElement.value; 
+
     if(!validateFormInputFields(cell1HtmlElement, "Kötelező megadni a területet!")){
         valid = false;
     };
-    
     if(!validateFormInputFields(cell2HtmlElement, "Kötelező megadni az időszakot!")){ 
         valid = false;
     };
     if(!validateFormInputFields(cell3HtmlElement, "Kötelező megadni az első tudóst!")){ 
-        valid = false;
-    };
-    if(!validateFormInputFieldsExtra(cell4HtmlElement,cell3HtmlElement, "Kötelező megadni az első tudóst is!")){ 
         valid = false;
     };
     
